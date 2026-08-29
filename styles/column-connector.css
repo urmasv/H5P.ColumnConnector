@@ -1,0 +1,518 @@
+.h5p-column-connector-host {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 1em;
+}
+
+.h5p-column-connector {
+  box-sizing: border-box;
+  max-width: 100%;
+  font-family: inherit;
+}
+
+.h5p-column-connector *,
+.h5p-column-connector *::before,
+.h5p-column-connector *::after {
+  box-sizing: border-box;
+}
+
+.h5p-cc-instructions {
+  margin: 0 0 1em;
+  font-size: 1.125em;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--h5p-theme-text-primary, inherit);
+}
+
+.h5p-cc-instructions > p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.h5p-cc-stage {
+  position: relative;
+  min-height: 14rem;
+  padding: 1rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 0.5rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.h5p-cc-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.h5p-cc-line,
+.h5p-cc-line-preview {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.h5p-cc-line {
+  stroke: #1f6feb;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+
+.h5p-cc-checked .h5p-cc-line {
+  cursor: default;
+  pointer-events: none;
+}
+
+.h5p-cc-line-correct {
+  stroke: #1a7f37;
+}
+
+.h5p-cc-line-incorrect {
+  stroke: #d1242f;
+  stroke-dasharray: 2 8;
+}
+
+.h5p-cc-line-missing {
+  stroke: #bf8700;
+  pointer-events: none;
+  cursor: default;
+}
+
+.h5p-cc-feedback-icon {
+  pointer-events: none;
+}
+
+.h5p-cc-feedback-icon circle {
+  fill: #fff;
+  stroke-width: 2;
+}
+
+.h5p-cc-feedback-icon text {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.h5p-cc-feedback-icon-correct circle,
+.h5p-cc-feedback-icon-correct text {
+  stroke: #1a7f37;
+  fill: #1a7f37;
+}
+
+.h5p-cc-feedback-icon-correct circle {
+  fill: #fff;
+}
+
+.h5p-cc-feedback-icon-incorrect circle,
+.h5p-cc-feedback-icon-incorrect text {
+  stroke: #d1242f;
+  fill: #d1242f;
+}
+
+.h5p-cc-feedback-icon-incorrect circle {
+  fill: #fff;
+}
+
+.h5p-cc-line-preview {
+  stroke: #737373;
+  stroke-dasharray: 8 7;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.h5p-cc-columns {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  column-gap: 10%;
+  row-gap: 1rem;
+  align-items: start;
+}
+
+.h5p-cc-columns[data-column-count="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.h5p-cc-columns[data-column-count="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.h5p-cc-columns[data-column-count="4"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 7%;
+}
+
+.h5p-cc-columns[data-column-count="5"] {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: 5%;
+}
+
+.h5p-cc-columns[data-column-count="6"] {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: 4%;
+}
+
+.h5p-cc-columns[data-column-count="7"] {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  column-gap: 3%;
+}
+
+.h5p-cc-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.h5p-cc-column-title {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.h5p-cc-column-title-empty {
+  visibility: hidden;
+}
+
+.h5p-cc-cell {
+  display: block;
+  width: 100%;
+  min-height: 4rem;
+  padding: 0.75rem;
+  border: 2px solid #cfcfcf;
+  border-radius: 0.5rem;
+  background: #f9fafb;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  font-weight: 400;
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.h5p-cc-cell:disabled {
+  cursor: default;
+}
+
+.h5p-cc-checked .h5p-cc-cell:hover,
+.h5p-cc-checked .h5p-cc-cell:focus {
+  border-color: #cfcfcf;
+  box-shadow: none;
+}
+
+.h5p-cc-cell:hover,
+.h5p-cc-cell:focus {
+  border-color: #4b89dc;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.16);
+  outline: none;
+}
+
+.h5p-cc-cell-selected {
+  border-color: #1f6feb;
+  background: #eef6ff;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.22);
+}
+
+.h5p-cc-cell-valid-target {
+  border-style: dashed;
+}
+
+.h5p-cc-cell-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Image position */
+.h5p-cc-cell-content.h5p-cc-pos-left {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* Image size (applies to both positions): large 100%, medium 50%, small 25% */
+.h5p-cc-size-large .h5p-cc-cell-image {
+  width: 100%;
+  max-width: 100%;
+}
+
+.h5p-cc-size-medium .h5p-cc-cell-image {
+  width: 50%;
+  max-width: 50%;
+}
+
+.h5p-cc-size-small .h5p-cc-cell-image {
+  width: 25%;
+  max-width: 25%;
+}
+
+/* Left position: image sits beside the text, which must always stay visible.
+   1.3 capped left images at 50% (small 25%, medium 50%); "large" at 100% would
+   leave no room for text, so it is capped at 50% here too. */
+.h5p-cc-pos-left .h5p-cc-cell-image {
+  max-width: 50%;
+}
+
+.h5p-cc-pos-left.h5p-cc-size-large .h5p-cc-cell-image {
+  flex: 0 0 50%;
+  width: 50%;
+  max-width: 50%;
+}
+
+.h5p-cc-pos-left.h5p-cc-size-medium .h5p-cc-cell-image {
+  flex: 0 0 50%;
+  width: 50%;
+}
+
+.h5p-cc-pos-left.h5p-cc-size-small .h5p-cc-cell-image {
+  flex: 0 0 25%;
+  width: 25%;
+}
+
+.h5p-cc-pos-left .h5p-cc-cell-text {
+  flex: 1 1 auto;
+  width: auto;
+  /* Shrink to the space left of the image instead of forcing a width that
+     would overflow a narrow cell and get clipped by the content wrapper. */
+  min-width: 0;
+}
+
+/* Above position: alignment of the image within the cell */
+.h5p-cc-pos-above.h5p-cc-align-center .h5p-cc-cell-image {
+  align-self: center;
+}
+
+.h5p-cc-pos-above.h5p-cc-align-left .h5p-cc-cell-image {
+  align-self: flex-start;
+}
+
+.h5p-cc-cell-image {
+  height: auto;
+  border-radius: 0.35rem;
+}
+
+.h5p-cc-cell-text {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  line-height: 1.35;
+  font-weight: 400;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.h5p-cc-cell-text p {
+  margin: 0 0 0.4rem;
+}
+
+.h5p-cc-cell-text p:last-child {
+  margin-bottom: 0;
+}
+
+.h5p-cc-empty-column {
+  padding: 1rem;
+  border: 2px dashed #cfcfcf;
+  border-radius: 0.5rem;
+  background: #fafafa;
+  color: #666;
+  text-align: center;
+}
+
+.h5p-cc-controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-reset,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-check,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-restart {
+  display: inline-block;
+  border: 0;
+  border-radius: 0.25em;
+  background: #1a73d9;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+  padding: 0.5em 1.25em;
+  text-decoration: none;
+  box-shadow: inset 0 -0.125em 0 rgba(0, 0, 0, 0.25);
+}
+
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-reset:hover,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-reset:focus,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-check:hover,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-check:focus,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-restart:hover,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-restart:focus {
+  background: #1356a3;
+  color: #fff;
+  outline: 2px solid #1356a3;
+  outline-offset: 2px;
+}
+
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-reset:active,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-check:active,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-restart:active {
+  box-shadow: inset 0 0.125em 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(1px);
+}
+
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-reset:disabled,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-check:disabled,
+.h5p-column-connector .h5p-joubelui-button.h5p-cc-restart:disabled {
+  background: #9aa0a6;
+  box-shadow: none;
+  cursor: default;
+  opacity: 0.75;
+  transform: none;
+}
+
+.h5p-cc-result {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.45rem;
+  border: 1px solid transparent;
+}
+
+.h5p-cc-result:empty {
+  display: none;
+}
+
+.h5p-cc-result-success {
+  border-color: #7bc47f;
+  background: #f0fff4;
+}
+
+.h5p-cc-result-failure {
+  border-color: #f2a6a6;
+  background: #fff5f5;
+}
+
+.h5p-cc-result-no-key {
+  border-color: #d0d7de;
+  background: #f6f8fa;
+}
+
+.h5p-cc-result-score {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.h5p-cc-result-spaced {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 6ch;
+  row-gap: 0.25rem;
+}
+
+.h5p-cc-result-detail-spaced {
+  column-gap: 3ch;
+}
+
+
+
+.h5p-cc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .h5p-cc-stage {
+    overflow-x: auto;
+  }
+
+  .h5p-cc-columns[data-column-count="2"] {
+    min-width: 40rem;
+  }
+
+  .h5p-cc-columns[data-column-count="3"] {
+    min-width: 48rem;
+  }
+
+  .h5p-cc-columns[data-column-count="4"] {
+    min-width: 56rem;
+  }
+
+  .h5p-cc-columns[data-column-count="5"] {
+    min-width: 66rem;
+  }
+
+  .h5p-cc-columns[data-column-count="6"] {
+    min-width: 76rem;
+  }
+
+  .h5p-cc-columns[data-column-count="7"] {
+    min-width: 86rem;
+  }
+}
+
+/* Horizontal row layout. The internal data model remains column-based; this only changes display. */
+.h5p-column-connector.h5p-cc-layout-rows .h5p-cc-columns {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+.h5p-column-connector.h5p-cc-layout-rows .h5p-cc-column {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  column-gap: 0.75rem;
+  row-gap: 0.75rem;
+  padding: 1rem 0;
+  border-top: 1px solid #d9d9d9;
+}
+
+.h5p-column-connector.h5p-cc-layout-rows .h5p-cc-column:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.h5p-column-connector.h5p-cc-layout-rows .h5p-cc-column:last-child {
+  padding-bottom: 0;
+}
+
+.h5p-column-connector.h5p-cc-layout-rows .h5p-cc-column-title {
+  flex: 0 0 100%;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+.h5p-column-connector.h5p-cc-layout-rows .h5p-cc-cell {
+  flex: 0 1 18rem;
+  width: auto;
+  max-width: 100%;
+}
+
+.h5p-column-connector.h5p-cc-layout-rows .h5p-cc-empty-column {
+  flex: 0 1 18rem;
+  max-width: 100%;
+}
