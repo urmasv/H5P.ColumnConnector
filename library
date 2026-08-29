@@ -1,0 +1,35 @@
+{
+  "title": "Connect with Lines",
+  "description": "Displays 2–7 titled columns with cells, lets learners connect neighboring column cells with lines, and supports answer checking.",
+  "majorVersion": 2,
+  "minorVersion": 0,
+  "patchVersion": 8,
+  "runnable": 1,
+  "author": "UrmasV",
+  "license": "MIT",
+  "machineName": "H5P.ColumnConnector",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 24
+  },
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "scripts/column-connector.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "styles/column-connector.css"
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.ColumnConnectorAnswerKey",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ]
+}
