@@ -1,0 +1,351 @@
+{
+  "semantics": [
+    {
+      "name": "layoutMode",
+      "type": "select",
+      "label": "Paigutus",
+      "default": "columns",
+      "options": [
+        {
+          "value": "columns",
+          "label": "Tulbad (vertikaal)"
+        },
+        {
+          "value": "rows",
+          "label": "Read (horisontaal)"
+        }
+      ],
+      "description": "Valige, kas lahtrirühmad kuvatakse vertikaalsete tulpadena või horisontaalsete ridadena."
+    },
+    {
+      "name": "instructions",
+      "type": "text",
+      "widget": "html",
+      "label": "Juhis õppijale",
+      "default": "<p>Ühenda lahtrid naabertulpades olevate lahtritega. Üks lahter võib olla ühendatud mitme naabertulba lahtriga.</p>",
+      "optional": true,
+      "tags": [
+        "p",
+        "br",
+        "strong",
+        "em",
+        "u",
+        "a",
+        "span"
+      ]
+    },
+    {
+      "name": "columns",
+      "type": "list",
+      "label": "Tulbad",
+      "entity": "tulp",
+      "min": 2,
+      "max": 7,
+      "description": "Lisage 2 kuni 7 tulpa (rida). Iga tulba saab eraldi kustutada või ümber järjestada.",
+      "field": {
+        "name": "column",
+        "type": "group",
+        "label": "Tulp",
+        "fields": [
+          {
+            "name": "title",
+            "type": "text",
+            "label": "Tulba pealkiri",
+            "optional": true
+          },
+          {
+            "name": "cells",
+            "type": "list",
+            "label": "Lahtrid",
+            "entity": "lahter",
+            "min": 1,
+            "field": {
+              "name": "cell",
+              "type": "group",
+              "label": "Lahter",
+              "fields": [
+                {
+                  "name": "text",
+                  "type": "text",
+                  "widget": "html",
+                  "label": "Tekst",
+                  "optional": true,
+                  "description": "Lahtri tekst. Võib jätta tühjaks, kui kasutate ainult pilti.",
+                  "tags": [
+                    "p",
+                    "br",
+                    "strong",
+                    "em",
+                    "u",
+                    "ul",
+                    "ol",
+                    "li",
+                    "a",
+                    "span",
+                    "sub",
+                    "sup"
+                  ]
+                },
+                {
+                  "name": "image",
+                  "type": "group",
+                  "label": "Lisa pilt",
+                  "importance": "low",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "type": "image",
+                      "label": "Lae pilt üles",
+                      "optional": true,
+                      "description": "Lahtris kuvatav pilt. Võib jätta tühjaks, kui kasutate ainult teksti."
+                    },
+                    {
+                      "name": "imageExtra",
+                      "type": "group",
+                      "label": "Lisa pildi URL ja alt-tekst",
+                      "importance": "low",
+                      "fields": [
+                        {
+                          "name": "url",
+                          "type": "text",
+                          "label": "Lisa pildi URL",
+                          "optional": true,
+                          "description": "Välise pildi aadress. Kasutatakse juhul, kui pildifaili pole valitud."
+                        },
+                        {
+                          "name": "alt",
+                          "type": "text",
+                          "label": "Pildi alternatiivtekst",
+                          "optional": true,
+                          "description": "Kirjeldus ekraanilugejale."
+                        }
+                      ],
+                      "collapsed": false
+                    },
+                    {
+                      "name": "position",
+                      "type": "select",
+                      "label": "Pildi paigutus",
+                      "default": "above",
+                      "options": [
+                        {
+                          "value": "above",
+                          "label": "teksti kohal"
+                        },
+                        {
+                          "value": "left",
+                          "label": "tekstist vasakul"
+                        }
+                      ],
+                      "description": "Valige, kas pilt kuvatakse teksti kohal või tekstist vasakul."
+                    },
+                    {
+                      "name": "size",
+                      "type": "select",
+                      "label": "Pildi suurus",
+                      "default": "large",
+                      "options": [
+                        {
+                          "value": "large",
+                          "label": "suur (100%)"
+                        },
+                        {
+                          "value": "medium",
+                          "label": "keskmine (50%)"
+                        },
+                        {
+                          "value": "small",
+                          "label": "väike (25%)"
+                        }
+                      ],
+                      "description": "Pildi laius lahtri suhtes. Kehtib mõlema paigutuse korral."
+                    },
+                    {
+                      "name": "align",
+                      "type": "select",
+                      "label": "Pildi joondus",
+                      "default": "center",
+                      "options": [
+                        {
+                          "value": "center",
+                          "label": "keskele"
+                        },
+                        {
+                          "value": "left",
+                          "label": "vasakule"
+                        }
+                      ],
+                      "description": "Kehtib ainult siis, kui pilt on teksti kohal."
+                    }
+                  ]
+                },
+                {
+                  "name": "correctToPrevious",
+                  "type": "text",
+                  "widget": "columnConnectorCellConnections",
+                  "label": "Õiged ühendused eelmise tulbaga",
+                  "optional": true,
+                  "description": "Valige eelmise tulba lahtrid, mis on selle lahtri õiged ühendused. Esimeses tulbas mõju ei ole."
+                }
+              ],
+              "collapsed": true
+            }
+          }
+        ],
+        "collapsed": true
+      },
+      "optional": true
+    },
+    {
+      "name": "behaviour",
+      "type": "group",
+      "label": "Käitumisseaded",
+      "fields": [
+        {
+          "name": "lineStyle",
+          "type": "select",
+          "label": "Joone stiil",
+          "default": "curved",
+          "options": [
+            {
+              "value": "curved",
+              "label": "Kaarjas"
+            },
+            {
+              "value": "straight",
+              "label": "Sirge"
+            }
+          ]
+        },
+        {
+          "name": "showResetButton",
+          "type": "boolean",
+          "label": "Kuva nupp „Tühista ühendused”",
+          "default": true
+        },
+        {
+          "name": "showCheckButton",
+          "type": "boolean",
+          "label": "Kuva nupp „Kontrolli vastust”",
+          "default": true,
+          "description": "Kui see on sisse lülitatud, saab õppija oma ühendusi võrrelda autoris määratud õigete ühendustega."
+        },
+        {
+          "name": "correctConnectionPoints",
+          "type": "number",
+          "label": "Punkte õige ühenduse eest",
+          "default": 1,
+          "description": "Vaikimisi +1 punkt iga õige ühenduse eest."
+        },
+        {
+          "name": "incorrectConnectionPoints",
+          "type": "number",
+          "label": "Punkte vale ühenduse eest",
+          "default": -1,
+          "description": "Vaikimisi -1 punkt iga vale ühenduse eest."
+        },
+        {
+          "name": "missingConnectionPoints",
+          "type": "number",
+          "label": "Punkte puuduva ühenduse eest",
+          "default": 0,
+          "description": "Vaikimisi 0 punkti iga puuduva ühenduse eest."
+        }
+      ],
+      "importance": "low",
+      "collapsed": true
+    },
+    {
+      "name": "resetButton",
+      "type": "text",
+      "label": "Ühenduste tühistamise nupu tekst",
+      "default": "Tühista ühendused",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "selected",
+      "type": "text",
+      "label": "Valiku teade",
+      "default": "Valitud: @column. tulp, @cell. lahter. Vali naabertulba lahter.",
+      "importance": "low",
+      "description": "Kasutatavad kohatäitjad: @column ja @cell.",
+      "common": true
+    },
+    {
+      "name": "invalidTarget",
+      "type": "text",
+      "label": "Vale sihi teade",
+      "default": "Ühendada saab ainult naabertulba lahtriga.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "duplicate",
+      "type": "text",
+      "label": "Topeltühenduse teade",
+      "default": "See ühendus on juba olemas.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "emptyColumn",
+      "type": "text",
+      "label": "Tühja tulba tekst",
+      "default": "Selles tulbas pole lahtreid.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "checkButton",
+      "type": "text",
+      "label": "Kontrollimise nupu tekst",
+      "default": "Kontrolli vastust",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "restartButton",
+      "type": "text",
+      "label": "Uuesti alustamise nupu tekst",
+      "default": "Alusta uuesti",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "resultText",
+      "type": "text",
+      "label": "Tulemuse ja punktisumma tekst",
+      "default": "Tulemus: @score/@max      Punkte: @points",
+      "description": "Kasutatavad kohatäitjad: @score, @max ja @points.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "allCorrect",
+      "type": "text",
+      "label": "Kõik õigesti teade",
+      "default": "Kõik ühendused on õiged.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "notAllCorrect",
+      "type": "text",
+      "label": "Vigade teade",
+      "default": "Õigeid ühendusi: @correct Valesid ühendusi: @incorrect Puuduvaid ühendusi: @missing",
+      "importance": "low",
+      "description": "Kasutatavad kohatäitjad: @correct, @incorrect ja @missing.",
+      "common": true
+    },
+    {
+      "name": "noAnswerKey",
+      "type": "text",
+      "label": "Puuduva vastusevõtme teade",
+      "default": "Õigeid ühendusi pole autorivaates määratud.",
+      "importance": "low",
+      "common": true
+    }
+  ]
+}

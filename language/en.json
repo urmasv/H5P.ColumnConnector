@@ -1,0 +1,351 @@
+{
+  "semantics": [
+    {
+      "name": "layoutMode",
+      "type": "select",
+      "label": "Layout",
+      "default": "columns",
+      "options": [
+        {
+          "value": "columns",
+          "label": "Columns (vertical)"
+        },
+        {
+          "value": "rows",
+          "label": "Rows (horizontal)"
+        }
+      ],
+      "description": "Choose whether the cell groups are displayed as vertical columns or horizontal rows."
+    },
+    {
+      "name": "instructions",
+      "type": "text",
+      "widget": "html",
+      "label": "Instructions for the learner",
+      "default": "<p>Connect the cells to cells in neighboring columns. One cell may be connected to several neighboring column cells.</p>",
+      "optional": true,
+      "tags": [
+        "p",
+        "br",
+        "strong",
+        "em",
+        "u",
+        "a",
+        "span"
+      ]
+    },
+    {
+      "name": "columns",
+      "type": "list",
+      "label": "Columns",
+      "entity": "column",
+      "min": 2,
+      "max": 7,
+      "description": "Add between 2 and 7 columns (rows). Each column may be deleted or reordered individually.",
+      "field": {
+        "name": "column",
+        "type": "group",
+        "label": "Column",
+        "fields": [
+          {
+            "name": "title",
+            "type": "text",
+            "label": "Column title",
+            "optional": true
+          },
+          {
+            "name": "cells",
+            "type": "list",
+            "label": "Cells",
+            "entity": "cell",
+            "min": 1,
+            "field": {
+              "name": "cell",
+              "type": "group",
+              "label": "Cell",
+              "fields": [
+                {
+                  "name": "text",
+                  "type": "text",
+                  "widget": "html",
+                  "label": "Text",
+                  "optional": true,
+                  "description": "Cell text. You may leave this empty if you only use an image.",
+                  "tags": [
+                    "p",
+                    "br",
+                    "strong",
+                    "em",
+                    "u",
+                    "ul",
+                    "ol",
+                    "li",
+                    "a",
+                    "span",
+                    "sub",
+                    "sup"
+                  ]
+                },
+                {
+                  "name": "image",
+                  "type": "group",
+                  "label": "Add image",
+                  "importance": "low",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "type": "image",
+                      "label": "Upload image",
+                      "optional": true,
+                      "description": "Image shown in the cell. You may leave this empty if you only use text."
+                    },
+                    {
+                      "name": "imageExtra",
+                      "type": "group",
+                      "label": "Add image URL and alt text",
+                      "importance": "low",
+                      "fields": [
+                        {
+                          "name": "url",
+                          "type": "text",
+                          "label": "Add image URL",
+                          "optional": true,
+                          "description": "URL of an external image. Used if no image file is selected."
+                        },
+                        {
+                          "name": "alt",
+                          "type": "text",
+                          "label": "Image alternative text",
+                          "optional": true,
+                          "description": "Description for screen readers."
+                        }
+                      ],
+                      "collapsed": false
+                    },
+                    {
+                      "name": "position",
+                      "type": "select",
+                      "label": "Image position",
+                      "default": "above",
+                      "options": [
+                        {
+                          "value": "above",
+                          "label": "Above the text"
+                        },
+                        {
+                          "value": "left",
+                          "label": "To the left of the text"
+                        }
+                      ],
+                      "description": "Choose whether the image is displayed above the text or to the left of the text."
+                    },
+                    {
+                      "name": "size",
+                      "type": "select",
+                      "label": "Image size",
+                      "default": "large",
+                      "options": [
+                        {
+                          "value": "large",
+                          "label": "large (100%)"
+                        },
+                        {
+                          "value": "medium",
+                          "label": "medium (50%)"
+                        },
+                        {
+                          "value": "small",
+                          "label": "small (25%)"
+                        }
+                      ],
+                      "description": "Image width relative to the cell. Applies to both image positions."
+                    },
+                    {
+                      "name": "align",
+                      "type": "select",
+                      "label": "Image alignment",
+                      "default": "center",
+                      "options": [
+                        {
+                          "value": "center",
+                          "label": "Center"
+                        },
+                        {
+                          "value": "left",
+                          "label": "Left"
+                        }
+                      ],
+                      "description": "Applies only when the image is placed above the text."
+                    }
+                  ]
+                },
+                {
+                  "name": "correctToPrevious",
+                  "type": "text",
+                  "widget": "columnConnectorCellConnections",
+                  "label": "Correct connections to the previous column",
+                  "optional": true,
+                  "description": "Select the cells in the previous column that are correct connections for this cell. Has no effect in the first column."
+                }
+              ],
+              "collapsed": true
+            }
+          }
+        ],
+        "collapsed": true
+      },
+      "optional": true
+    },
+    {
+      "name": "behaviour",
+      "type": "group",
+      "label": "Behavioural settings",
+      "fields": [
+        {
+          "name": "lineStyle",
+          "type": "select",
+          "label": "Line style",
+          "default": "curved",
+          "options": [
+            {
+              "value": "curved",
+              "label": "Curved"
+            },
+            {
+              "value": "straight",
+              "label": "Straight"
+            }
+          ]
+        },
+        {
+          "name": "showResetButton",
+          "type": "boolean",
+          "label": "Show the “Clear connections” button",
+          "default": true
+        },
+        {
+          "name": "showCheckButton",
+          "type": "boolean",
+          "label": "Show the “Check answer” button",
+          "default": true,
+          "description": "If enabled, the learner can compare their connections with the correct connections defined by the author."
+        },
+        {
+          "name": "correctConnectionPoints",
+          "type": "number",
+          "label": "Points for a correct connection",
+          "default": 1,
+          "description": "Default: +1 point for each correct connection."
+        },
+        {
+          "name": "incorrectConnectionPoints",
+          "type": "number",
+          "label": "Points for an incorrect connection",
+          "default": -1,
+          "description": "Default: -1 point for each incorrect connection."
+        },
+        {
+          "name": "missingConnectionPoints",
+          "type": "number",
+          "label": "Points for a missing connection",
+          "default": 0,
+          "description": "Default: 0 points for each missing connection."
+        }
+      ],
+      "importance": "low",
+      "collapsed": true
+    },
+    {
+      "name": "resetButton",
+      "type": "text",
+      "label": "Clear button label",
+      "default": "Clear connections",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "selected",
+      "type": "text",
+      "label": "Selection message",
+      "default": "Selected: column @column, cell @cell. Choose a cell in a neighboring column.",
+      "importance": "low",
+      "description": "Available placeholders: @column and @cell.",
+      "common": true
+    },
+    {
+      "name": "invalidTarget",
+      "type": "text",
+      "label": "Invalid target message",
+      "default": "You can only connect to a cell in a neighboring column.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "duplicate",
+      "type": "text",
+      "label": "Duplicate connection message",
+      "default": "This connection already exists.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "emptyColumn",
+      "type": "text",
+      "label": "Empty column message",
+      "default": "There are no cells in this column.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "checkButton",
+      "type": "text",
+      "label": "Check button label",
+      "default": "Check answer",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "restartButton",
+      "type": "text",
+      "label": "Restart button label",
+      "default": "Restart",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "resultText",
+      "type": "text",
+      "label": "Result and score text",
+      "default": "Result: @score/@max      Points: @points",
+      "description": "Available placeholders: @score, @max and @points.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "allCorrect",
+      "type": "text",
+      "label": "All correct message",
+      "default": "All connections are correct.",
+      "importance": "low",
+      "common": true
+    },
+    {
+      "name": "notAllCorrect",
+      "type": "text",
+      "label": "Error summary message",
+      "default": "Correct connections: @correct Incorrect connections: @incorrect Missing connections: @missing",
+      "importance": "low",
+      "description": "Available placeholders: @correct, @incorrect and @missing.",
+      "common": true
+    },
+    {
+      "name": "noAnswerKey",
+      "type": "text",
+      "label": "Missing answer key message",
+      "default": "No correct connections have been defined in the authoring view.",
+      "importance": "low",
+      "common": true
+    }
+  ]
+}
