@@ -1,0 +1,12 @@
+# H5P / Node
+node_modules/
+*.h5p
+dist/
+build/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
