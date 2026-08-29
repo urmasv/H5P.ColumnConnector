@@ -1,0 +1,109 @@
+{
+  "layoutMode": "rows",
+  "behaviour": {
+    "lineStyle": "straight",
+    "showResetButton": true,
+    "showCheckButton": true,
+    "correctConnectionPoints": 1,
+    "incorrectConnectionPoints": -1,
+    "missingConnectionPoints": 0
+  },
+  "resetButton": "Tühista ühendused",
+  "selected": "Valitud: @column. tulp, @cell. lahter. Vali naabertulba lahter.",
+  "invalidTarget": "Ühendada saab ainult naabertulba lahtriga.",
+  "duplicate": "See ühendus on juba olemas.",
+  "emptyColumn": "Selles tulbas pole lahtreid.",
+  "checkButton": "Kontrolli vastust",
+  "restartButton": "Alusta uuesti",
+  "resultText": "Tulemus: @score/@max      Punkte: @points",
+  "allCorrect": "Kõik ühendused on õiged.",
+  "notAllCorrect": "Õigeid ühendusi: @correct Valesid ühendusi: @incorrect Puuduvaid ühendusi: @missing",
+  "noAnswerKey": "Õigeid ühendusi pole autorivaates määratud.",
+  "columns": [
+    {
+      "title": "",
+      "cells": [
+        {
+          "text": "<p style=\"text-align:center;\"><strong>Henri II</strong> (1519 – 1559)</p>",
+          "image": {
+            "position": "above",
+            "size": "large",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "title": "",
+      "cells": [
+        {
+          "text": "<p style=\"text-align:center;\"><strong>François II</strong> (1544 – 1560)</p>",
+          "image": {
+            "position": "above",
+            "size": "large",
+            "align": "left"
+          },
+          "correctToPrevious": "[1]"
+        },
+        {
+          "text": "<p style=\"text-align:center;\"><strong>Charles IX</strong> (1550 – 1574)</p>",
+          "image": {
+            "position": "above",
+            "size": "large",
+            "align": "left"
+          },
+          "correctToPrevious": "[1]"
+        },
+        {
+          "text": "<p style=\"text-align:center;\"><strong>Henri III</strong> (1551 – 1589)</p>",
+          "image": {
+            "position": "above",
+            "size": "large",
+            "align": "left"
+          },
+          "correctToPrevious": "[1]"
+        },
+        {
+          "text": "<p style=\"text-align:center;\"><strong>Henri IV</strong> (1553 – 1610)</p>",
+          "image": {
+            "position": "above",
+            "size": "large",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "title": "",
+      "cells": [
+        {
+          "text": "<p style=\"text-align:center;\"><strong>Louis XIII</strong> (1601 – 1643)</p>",
+          "image": {
+            "position": "above",
+            "size": "large",
+            "align": "left"
+          },
+          "correctToPrevious": "[4]"
+        }
+      ]
+    },
+    {
+      "title": "",
+      "cells": [
+        {
+          "text": "<p style=\"text-align:center;\"><strong>Louis XIV</strong> (1638 – 1715)</p>",
+          "image": {
+            "position": "above",
+            "size": "large",
+            "align": "left",
+            "imageExtra": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Louis_XIV_of_France.jpg/250px-Louis_XIV_of_France.jpg"
+            }
+          },
+          "correctToPrevious": "[1]"
+        }
+      ]
+    }
+  ],
+  "instructions": "<p>Ühenda lapsed vanematega.</p>"
+}
