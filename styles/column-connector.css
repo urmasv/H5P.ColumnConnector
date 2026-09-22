@@ -70,11 +70,11 @@
 }
 
 .h5p-cc-line-correct {
-  stroke: #1a7f37;
+  stroke: #1f6feb;
 }
 
 .h5p-cc-line-incorrect {
-  stroke: #d1242f;
+  stroke: #d64a4a;
   stroke-dasharray: 2 8;
 }
 
@@ -101,8 +101,8 @@
 
 .h5p-cc-feedback-icon-correct circle,
 .h5p-cc-feedback-icon-correct text {
-  stroke: #1a7f37;
-  fill: #1a7f37;
+  stroke: #1f6feb;
+  fill: #1f6feb;
 }
 
 .h5p-cc-feedback-icon-correct circle {
@@ -111,8 +111,8 @@
 
 .h5p-cc-feedback-icon-incorrect circle,
 .h5p-cc-feedback-icon-incorrect text {
-  stroke: #d1242f;
-  fill: #d1242f;
+  stroke: #d64a4a;
+  fill: #d64a4a;
 }
 
 .h5p-cc-feedback-icon-incorrect circle {
