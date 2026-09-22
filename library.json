@@ -3,7 +3,7 @@
   "description": "Displays 2–7 titled columns with cells, lets learners connect neighboring column cells with lines, and supports answer checking.",
   "majorVersion": 2,
   "minorVersion": 0,
-  "patchVersion": 8,
+  "patchVersion": 9,
   "runnable": 1,
   "author": "UrmasV",
   "license": "MIT",
