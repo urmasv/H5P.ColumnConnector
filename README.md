@@ -28,29 +28,3 @@ Redaktoris on vaja kaaslasteeki
 (vastusevõtme vidin). Vt `library.json` → `editorDependencies`.
 
 - `coreApi`: 1.24
-
-## Paigaldamine
-
-**Moodle (mod_hvp) või muu H5P-hosti puhul:** paigalda teek osana `.h5p`
-paketist (sisaldab nii seda teeki, redaktoriteeki kui ka näidissisu) või
-sisutüüpide halduse kaudu.
-
-**Arenduseks (h5p-cli):**
-
-```bash
-# klooni mõlemad teegid kõrvuti
-git clone https://github.com/urmasv/H5P.ColumnConnector.git
-git clone https://github.com/urmasv/H5PEditor.ColumnConnectorAnswerKey.git
-```
-
-Ehitamist ei ole vaja — teek koosneb tavalisest JS-ist ja CSS-ist, repo juur
-ongi teegi juur (`library.json`, `semantics.json`, `scripts/`, `styles/`,
-`language/`, `upgrades.js`).
-
-## Litsents
-
-MIT — vt [LICENSE](LICENSE).
-
-## Autorid
-
-Autor ja hooldus: UrmasV.
