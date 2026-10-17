@@ -1368,7 +1368,23 @@ H5P.ColumnConnector = (function ($, EventDispatcher) {
   };
 
   ColumnConnector.prototype.getXAPIResponse = function () {
-    return this.getXAPIConnectionPattern(this.connections);
+    var self = this;
+
+    // Raporti jaoks võetakse arvesse ainult neid õpilase ühendusi, mis kuuluvad
+    // vastusevõtmesse (määratud ühendused). Küsimata jäänud ("fantaasia") valed
+    // ühendused jäetakse välja — neid ei küsitud, seega raportis ei kajastu.
+    var correctSet = {};
+    (this.correctConnections || []).forEach(function (connection) {
+      var n = self.getNormalizedConnectionPositions(connection);
+      correctSet[self.getXAPICellId(n.from) + '[.]' + self.getXAPICellId(n.to)] = true;
+    });
+
+    var asked = (this.connections || []).filter(function (connection) {
+      var n = self.getNormalizedConnectionPositions(connection);
+      return correctSet[self.getXAPICellId(n.from) + '[.]' + self.getXAPICellId(n.to)] === true;
+    });
+
+    return this.getXAPIConnectionPattern(asked);
   };
 
   ColumnConnector.prototype.getXAPIConnectionPattern = function (connections) {
@@ -1424,7 +1440,14 @@ H5P.ColumnConnector = (function ($, EventDispatcher) {
   };
 
   ColumnConnector.prototype.getXAPICellId = function (position) {
-    return 'c' + (position.col + 1) + 'r' + (position.row + 1);
+    // Lamedad ARVULISED ID-d, mis vastavad lahtri indeksile source/target
+    // massiivis (tulp-siis-rida). mod_hvp Reporting-teek kasutab vastusemustri
+    // osasid massiiviindeksitena, seega ID peab olema arvuline string.
+    var index = 0;
+    for (var c = 0; c < position.col; c++) {
+      index += (this.columns[c] ? this.columns[c].length : 0);
+    }
+    return String(index + position.row);
   };
 
   ColumnConnector.prototype.getXAPICellDescription = function (columnIndex, rowIndex, cell) {
