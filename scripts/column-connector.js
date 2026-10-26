@@ -352,7 +352,11 @@ H5P.ColumnConnector = (function ($, EventDispatcher) {
     }
 
     this.resizeObserver = new ResizeObserver(function () {
-      self.scheduleContentResize(80, false);
+      // Konteineri suuruse muutusel joonista jooned ümber (nagu akna resize), AGA ära
+      // käivita H5P 'resize'-sündmust: muidu tekib kerimisriba vilkumisel tagasisideahel,
+      // mis paneb sisu laiuse võnkuma (kitsamaks-laiemaks).
+      self.syncColumnTitleHeights();
+      self.redraw();
     });
 
     this.resizeObserver.observe(this.$wrapper[0]);
