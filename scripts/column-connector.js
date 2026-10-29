@@ -316,9 +316,12 @@ H5P.ColumnConnector = (function ($, EventDispatcher) {
     this.bindImageResizeHandlers();
     this.startResizeObserver();
 
-    $.each([0, 50, 150, 300, 600, 1200], function (index, delay) {
-      self.scheduleContentResize(delay, true);
-    });
+    // Üks kohene paigutus (õige kõrgus kohe) ja üks koondatud lõpp-paigutus pärast seda,
+    // kui pildid/fondid on laetud. Sammhaaval pursata (0,50,150,300,600,1200 ms) EI tehta,
+    // sest iga ümberpaigutus paneb bistabiilsel laiusel kerimisriba korra vilkuma ehk sisu
+    // laiuse laadimise ajal võbelema. scheduleContentResize koondab kõik ootel resize'id üheks.
+    this.performContentResize(true);
+    this.scheduleContentResize(1200, true);
   };
 
   ColumnConnector.prototype.bindImageResizeHandlers = function () {
@@ -365,8 +368,18 @@ H5P.ColumnConnector = (function ($, EventDispatcher) {
   ColumnConnector.prototype.scheduleContentResize = function (delay, force) {
     var self = this;
 
-    window.setTimeout(function () {
-      self.performContentResize(!!force);
+    // Koonda kiiresti järjestikused resize-soovid üheks: iga kutse lükkab eelmise ootel
+    // paigutuse edasi, nii et laadimisel (algus + piltide load) tehakse lõpuks ÜKS
+    // ümberpaigutus, mitte korduv tulv. force jääb kehtima, kui mõni kutse akna sees seda soovis.
+    if (force) {
+      this.pendingResizeForce = true;
+    }
+
+    window.clearTimeout(this.resizeTimer);
+    this.resizeTimer = window.setTimeout(function () {
+      var forced = self.pendingResizeForce;
+      self.pendingResizeForce = false;
+      self.performContentResize(!!forced);
     }, delay || 0);
   };
 
